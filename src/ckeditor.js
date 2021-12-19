@@ -8,9 +8,9 @@ import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
 import AutoImage from '@ckeditor/ckeditor5-image/src/autoimage.js';
 import AutoLink from '@ckeditor/ckeditor5-link/src/autolink.js';
 import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave.js';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold.js';
-import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter.js';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices.js';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code.js';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock.js';
@@ -42,7 +42,6 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle.js';
-import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown.js';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention.js';
@@ -58,7 +57,6 @@ import SpecialCharactersEssentials from '@ckeditor/ckeditor5-special-characters/
 import SpecialCharactersLatin from '@ckeditor/ckeditor5-special-characters/src/specialcharacterslatin.js';
 import SpecialCharactersMathematical from '@ckeditor/ckeditor5-special-characters/src/specialcharactersmathematical.js';
 import SpecialCharactersText from '@ckeditor/ckeditor5-special-characters/src/specialcharacterstext.js';
-import StandardEditingMode from '@ckeditor/ckeditor5-restricted-editing/src/standardeditingmode.js';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough.js';
 import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript.js';
 import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript.js';
@@ -67,7 +65,6 @@ import TableCaption from '@ckeditor/ckeditor5-table/src/tablecaption.js';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
-import TextPartLanguage from '@ckeditor/ckeditor5-language/src/textpartlanguage.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
 import Title from '@ckeditor/ckeditor5-heading/src/title.js';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
@@ -84,9 +81,9 @@ Editor.builtinPlugins = [
 	AutoImage,
 	AutoLink,
 	Autosave,
+	Base64UploadAdapter,
 	BlockQuote,
 	Bold,
-	CKFinderUploadAdapter,
 	CloudServices,
 	Code,
 	CodeBlock,
@@ -118,7 +115,6 @@ Editor.builtinPlugins = [
 	LinkImage,
 	List,
 	ListStyle,
-	Markdown,
 	MediaEmbed,
 	MediaEmbedToolbar,
 	Mention,
@@ -134,7 +130,6 @@ Editor.builtinPlugins = [
 	SpecialCharactersLatin,
 	SpecialCharactersMathematical,
 	SpecialCharactersText,
-	StandardEditingMode,
 	Strikethrough,
 	Subscript,
 	Superscript,
@@ -143,7 +138,6 @@ Editor.builtinPlugins = [
 	TableCellProperties,
 	TableProperties,
 	TableToolbar,
-	TextPartLanguage,
 	TextTransformation,
 	Title,
 	TodoList,
@@ -157,6 +151,7 @@ Editor.defaultConfig = {
 		items: [
 			'undo',
 			'redo',
+			'findAndReplace',
 			'|',
 			'heading',
 			'|',
@@ -165,6 +160,7 @@ Editor.defaultConfig = {
 			'|',
 			'fontColor',
 			'fontBackgroundColor',
+			'highlight',
 			'|',
 			'bold',
 			'italic',
@@ -180,23 +176,19 @@ Editor.defaultConfig = {
 			'indent',
 			'|',
 			'todoList',
-			'link',
-			'blockQuote',
-			'imageUpload',
-			'imageInsert',
 			'insertTable',
+			'blockQuote',
+			'link',
+			'imageInsert',
 			'mediaEmbed',
 			'|',
+			'removeFormat',
 			'horizontalLine',
 			'pageBreak',
-			'findAndReplace',
-			'highlight',
-			'removeFormat',
+			'|',
 			'specialCharacters',
-			'restrictedEditingException',
 			'superscript',
 			'subscript',
-			'textPartLanguage',
 			'|',
 			'sourceEditing',
 			'htmlEmbed',
